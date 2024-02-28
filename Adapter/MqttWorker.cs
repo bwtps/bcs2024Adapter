@@ -75,16 +75,16 @@ namespace Adapter
 
         public async Task CalibrationHandler(string type, string uri, string feat)
         {
-            //var calibration = new IotMqttCalibration();
-            //MqttApplicationMessage message = MqttMessageUtil.ToIotMqttMessage("iot/down", type.ToString(), uri, feat, calibration.ConvertToHex(), MqttQualityOfServiceLevel.ExactlyOnce);
-            //await IotMqttTool.PublishAsync(message);
-            //message = MqttMessageUtil.ToIotMqttMessage("iot/down", type.ToString(), uri, feat, Encoding.UTF8.GetBytes(calibration.ConvertToJson()), MqttQualityOfServiceLevel.ExactlyOnce);
-            //await IotMqttTool.PublishAsync(message);
             var calibration = new IotMqttCalibration();
-            MqttApplicationMessage message = MqttMessageUtil.ToIotMqttMessage("adapter/down", type.ToString(), uri, feat, calibration.ConvertToHex(), MqttQualityOfServiceLevel.ExactlyOnce);
+            MqttApplicationMessage message = MqttMessageUtil.ToIotMqttMessage("iot/down", type.ToString(), uri, feat, calibration.ConvertToHex(), MqttQualityOfServiceLevel.ExactlyOnce);
             await IotMqttTool.PublishAsync(message);
-            message = MqttMessageUtil.ToIotMqttMessage("adapter/down", type.ToString(), uri, feat, Encoding.UTF8.GetBytes(calibration.ConvertToJson()), MqttQualityOfServiceLevel.ExactlyOnce);
+            message = MqttMessageUtil.ToIotMqttMessage("iot/down", type.ToString(), uri, feat, Encoding.UTF8.GetBytes(calibration.ConvertToJson()), MqttQualityOfServiceLevel.ExactlyOnce);
             await IotMqttTool.PublishAsync(message);
+            //var calibration = new IotMqttCalibration();
+            //MqttApplicationMessage message = MqttMessageUtil.ToIotMqttMessage("adapter/down", type.ToString(), uri, feat, calibration.ConvertToHex(), MqttQualityOfServiceLevel.ExactlyOnce);
+            //await IotMqttTool.PublishAsync(message);
+            //message = MqttMessageUtil.ToIotMqttMessage("adapter/down", type.ToString(), uri, feat, Encoding.UTF8.GetBytes(calibration.ConvertToJson()), MqttQualityOfServiceLevel.ExactlyOnce);
+            //await IotMqttTool.PublishAsync(message);
         }
 
         public async Task StateHandler(string type, string uri, string feat, byte[] data)
